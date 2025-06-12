@@ -209,13 +209,6 @@ Dieses Projekt nutzt:
 - [Kivy](https://kivy.org/) - Cross-platform Python Framework
 - [Python](https://python.org/) - Programmiersprache
 
-## 📞 Support
-
-Bei Fragen oder Problemen:
-1. Überprüfen Sie die Troubleshooting-Sektion
-2. Erstellen Sie ein Issue im Repository
-3. Testen Sie mit der neuesten Version
-
 ---
 
 ## 📜 Lizenz
