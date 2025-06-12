@@ -1,0 +1,140 @@
+# Haupt-Layout für den Kivy Designer
+<DesignerRoot>:
+    orientation: 'horizontal'
+    
+    # Toolbox auf der linken Seite
+    Toolbox:
+        id: toolbox
+        widget_area: widget_area
+        property_editor: property_editor
+    
+    # Hauptbereich für Widget-Design
+    WidgetArea:
+        id: widget_area
+        property_editor: property_editor
+    
+    # Eigenschaften-Editor auf der rechten Seite
+    PropertyEditor:
+        id: property_editor
+        widget_area: widget_area
+
+<Toolbox>:
+    orientation: 'vertical'
+    size_hint_x: 0.2
+    spacing: 5
+    padding: 5
+    
+    canvas.before:
+        Color:
+            rgba: 0.9, 0.9, 0.9, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    
+    Label:
+        text: 'Widget Toolbox'
+        size_hint_y: None
+        height: 30
+        bold: True
+    
+    ScrollView:
+        GridLayout:
+            cols: 1
+            spacing: 2
+            size_hint_y: None
+            height: self.minimum_height
+            
+            Button:
+                text: 'Button'
+                size_hint_y: None
+                height: 40
+                on_release: root.add_widget_to_area('Button')
+            
+            Button:
+                text: 'Label'
+                size_hint_y: None
+                height: 40
+                on_release: root.add_widget_to_area('Label')
+            
+            Button:
+                text: 'Slider'
+                size_hint_y: None
+                height: 40
+                on_release: root.add_widget_to_area('Slider')
+            
+            Button:
+                text: 'TextInput'
+                size_hint_y: None
+                height: 40
+                on_release: root.add_widget_to_area('TextInput')
+            
+            Button:
+                text: 'CheckBox'
+                size_hint_y: None
+                height: 40
+                on_release: root.add_widget_to_area('CheckBox')
+            
+            Button:
+                text: 'ProgressBar'
+                size_hint_y: None
+                height: 40
+                on_release: root.add_widget_to_area('ProgressBar')
+    
+    # Export-Buttons
+    BoxLayout:
+        orientation: 'vertical'
+        size_hint_y: None
+        height: 100
+        spacing: 5
+        
+        Button:
+            text: 'Export .kv'
+            size_hint_y: None
+            height: 40
+            on_release: root.export_kv()
+        
+        Button:
+            text: 'Export .py'
+            size_hint_y: None
+            height: 40
+            on_release: root.export_py()
+
+<WidgetArea>:
+    canvas.before:
+        Color:
+            rgba: 0.98, 0.98, 0.98, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+        Color:
+            rgba: 0.8, 0.8, 0.8, 1
+        Line:
+            rectangle: self.x, self.y, self.width, self.height
+
+<PropertyEditor>:
+    orientation: 'vertical'
+    size_hint_x: 0.25
+    spacing: 5
+    padding: 5
+    
+    canvas.before:
+        Color:
+            rgba: 0.95, 0.95, 0.95, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    
+    Label:
+        text: 'Eigenschaften'
+        size_hint_y: None
+        height: 30
+        bold: True
+    
+    ScrollView:
+        id: properties_scroll
+        GridLayout:
+            id: properties_container
+            cols: 1
+            spacing: 5
+            size_hint_y: None
+            height: self.minimum_height
